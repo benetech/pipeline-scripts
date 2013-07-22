@@ -510,10 +510,12 @@
     <!-- =============================================================== -->
     <p:documentation>Validate the final ZedAI output.</p:documentation>
     <cx:message message="Validating ZedAI"/>
-    <px:validate-with-relax-ng-and-report name="validate-zedai" assert-valid="true">
+    <!-- Bookshare: Allow validation to be turned off here as well. -->
+    <px:validate-with-relax-ng-and-report name="validate-zedai">
         <p:input port="schema">
             <p:document href="./schema/z3998-book-1.0-latest/z3998-book.rng"/>
         </p:input>
+        <p:with-option name="assert-valid" select="$opt-assert-valid"/>
     </px:validate-with-relax-ng-and-report>
     <cx:message message="ZedAI output is valid."/>
     <cx:message message="Conversion complete."/>
